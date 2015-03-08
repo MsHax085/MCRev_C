@@ -1,6 +1,7 @@
 #include "main.h"
 #include "constants.h"
 //#include <Windows.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 //#include <mysql.h>
@@ -35,16 +36,16 @@ void watch_input() {
 }
 
 void handle_input(char row[]) {
-	if (strcmp(row, "START") == 0 || strcmp(row, "start") == 0) {
+	if (strncmp(row, "START", 5) == 0 || strncmp(row, "start", 5) == 0) {
 		funct_start();
 	} else
-	if (strcmp(row, "STOP") == 0 || strcmp(row, "stop") == 0) {
+	if (strncmp(row, "STOP", 4) == 0 || strncmp(row, "stop", 4) == 0) {
 		funct_stop();
 	} else
-	if (strcmp(row, "EXIT") == 0 || strcmp(row, "exit") == 0) {
+	if (strncmp(row, "EXIT", 4) == 0 || strncmp(row, "exit", 4) == 0) {
 		funct_exit();
 	} else
-	if (strcmp(row, "HELP") == 0 || strcmp(row, "help") == 0) {
+	if (strncmp(row, "HELP", 4) == 0 || strncmp(row, "help", 4) == 0) {
 		funct_help();
 	} else {
 		printf("Unknown command.\n");
@@ -60,9 +61,13 @@ void funct_stop() {
 }
 
 void funct_exit() {
-	printf("Caught\n");
+	exit(0);
 }
 
 void funct_help() {
-	printf("Caught\n");
+	printf("==\n");
+	printf(" START - Start server handler\n");
+	printf(" STOP	- Stop server handler\n");
+	printf(" EXIT  - Exit application\n");
+	printf("==\n");
 }
