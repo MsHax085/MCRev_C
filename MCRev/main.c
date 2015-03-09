@@ -1,12 +1,12 @@
-#include "main.h"
-#include "constants.h"
-//#include <Windows.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 //#include <mysql.h>
+#include "constants.h"
+#include "main.h"
+#include "handler.h"
 
-char RUN = 1;
+char RUN = TRUE;
 
 int main() {
 	printf("Revision [Version: %s]\n", VERSION);
@@ -53,11 +53,13 @@ void handle_input(char row[]) {
 }
 
 void funct_start() {
-	printf("Caught\n");
+	if (!handler_start()) {
+		printf("Failed to start handler, already running?\n");
+	}
 }
 
 void funct_stop() {
-	printf("Caught\n");
+	handler_stop();
 }
 
 void funct_exit() {

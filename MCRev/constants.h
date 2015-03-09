@@ -2,3 +2,6 @@
 #define DEBUG 1
 #define AUTO_START 0
 #define MAX_CMD_LEN 5
+#define DELAY 250
+#define TRUE 1
+#define FALSE 0
